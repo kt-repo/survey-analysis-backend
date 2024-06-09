@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: my-new-project-dev
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: mongodb-dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - /Users/kevin/cs673/db:/data/db
