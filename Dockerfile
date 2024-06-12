@@ -13,11 +13,12 @@ RUN npm install
 # Copy the rest of the application code
 COPY . .
 
+# Set build-time argument for environment
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
+
 # Expose the port the app runs on
 EXPOSE 3000
-
-# Define environment variable
-ENV NODE_ENV=production
 
 # Run the application
 CMD ["node", "src/server.js"]

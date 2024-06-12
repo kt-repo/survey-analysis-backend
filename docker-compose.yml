@@ -1,7 +1,10 @@
 version: '3.8'
 services:
   app:
-    build: .
+    build:
+      context: .
+      args:
+        NODE_ENV: development
     container_name: my-new-project-dev
     env_file:
       - .env

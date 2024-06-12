@@ -3,6 +3,8 @@ services:
   app:
     build:
       context: .
+      args:
+        NODE_ENV: production
     container_name: my-new-project-prod
     env_file:
       - .env.production
