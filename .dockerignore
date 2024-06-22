@@ -14,3 +14,9 @@ test
 # ignore git directories and files
 .git
 .gitignore
+
+# MongoDB data directory
+data/db
+
+# Other unnecessary files
+*.md

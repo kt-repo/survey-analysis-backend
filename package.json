@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "dotenv -e .env node src/server.js",
-    "dev": "NODE_ENV=development dotenv -e .env node src/server.js",
+    "dev": "NODE_ENV=development dotenv -e .env nodemon src/server.js",
     "prod": "NODE_ENV=production dotenv -e .env.production node src/server.js"
   },
   "keywords": [],
