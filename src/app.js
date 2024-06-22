@@ -2,8 +2,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('./config');
-const userRoutes = require('./routes/userRoutes');
 const corsMiddleware = require('./middleware/cors');
+const userRoutes = require('./routes/userRoutes');
+const learningMethodRoutes = require('./routes/learningMethodRoutes');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(corsMiddleware);
 
 // Routes
 app.use('/api', userRoutes);
+app.use('/api', learningMethodRoutes);
 
 mongoose.connect(config.dbConnectionString, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))

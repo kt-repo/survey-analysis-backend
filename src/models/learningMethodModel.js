@@ -1,4 +1,4 @@
-// src/models/learningRecordModel.js
+// src/models/learningMethodModel.js
 
 const mongoose = require('mongoose');
 
@@ -7,11 +7,11 @@ const DataSchema = new mongoose.Schema({
     ranking: { type: [Number], required: true }
 });
 
-const LearningRecordSchema = new mongoose.Schema({
+const LearningMethodSchema = new mongoose.Schema({
     name: { type: String, required: true },
     semester: { type: String, required: true },
     year: { type: Number, required: true },
     data: [DataSchema]
 });
 
-module.exports = mongoose.model('LearningRecord', LearningRecordSchema);
+module.exports = mongoose.model('LearningMethod', LearningMethodSchema);

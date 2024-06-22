@@ -60,8 +60,9 @@ DB_CONNECTION_STRING=mongodb://mongo:27017/dev_db
 3. Start the server:
 
 ```
-# development
-docker-compose --env-file .env up --build
+# development 
+docker-compose up --build
+docker-compose up # after image has been built
 
 # production
 docker-compose --env-file .env.production -f docker-compose.prod.yml up --build

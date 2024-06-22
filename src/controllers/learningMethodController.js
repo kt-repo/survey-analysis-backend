@@ -1,19 +1,19 @@
-// src/controllers/learningRecordController.js
+// src/controllers/learningMethodController.js
 
-const LearningRecord = require('../models/learningRecordModel');
+const LearningMethod = require('../models/learningMethodModel');
 
-exports.getLearningRecords = async (req, res) => {
+exports.getLearningMethods = async (req, res) => {
     try {
-        const records = await LearningRecord.find();
+        const records = await LearningMethod.find();
         res.status(200).json(records);
     } catch (error) {
         res.status(500).json({ error: 'Server Error' });
     }
 };
 
-exports.getLearningRecordById = async (req, res) => {
+exports.getLearningMethodById = async (req, res) => {
     try {
-        const record = await LearningRecord.findById(req.params.id);
+        const record = await LearningMethod.findById(req.params.id);
         if (!record) {
             return res.status(404).json({ msg: 'Record not found' });
         }
@@ -23,9 +23,9 @@ exports.getLearningRecordById = async (req, res) => {
     }
 };
 
-exports.createLearningRecord = async (req, res) => {
+exports.createLearningMethod= async (req, res) => {
     try {
-        const record = new LearningRecord(req.body);
+        const record = new LearningMethod(req.body);
         await record.save();
         res.status(201).json(record);
     } catch (error) {
@@ -33,9 +33,9 @@ exports.createLearningRecord = async (req, res) => {
     }
 };
 
-exports.updateLearningRecord = async (req, res) => {
+exports.updateLearningMethod = async (req, res) => {
     try {
-        const record = await LearningRecord.findByIdAndUpdate(
+        const record = await LearningMethod.findByIdAndUpdate(
             req.params.id,
             { $set: req.body },
             { new: true, runValidators: true }
@@ -51,9 +51,9 @@ exports.updateLearningRecord = async (req, res) => {
     }
 };
 
-exports.deleteLearningRecord = async (req, res) => {
+exports.deleteLearningMethod = async (req, res) => {
     try {
-        const record = await LearningRecord.findByIdAndDelete(req.params.id);
+        const record = await LearningMethod.findByIdAndDelete(req.params.id);
 
         if (!record) {
             return res.status(404).json({ msg: 'Record not found' });
