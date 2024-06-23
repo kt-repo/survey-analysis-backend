@@ -25,5 +25,35 @@ services:
     volumes:
       - db-data:/data/db
 
+  test:
+    build:
+      context: .
+      args:
+        NODE_ENV: test
+    container_name: my-new-project-test
+    command: npm test
+    env_file:
+      - .env.test
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+
+  seed:
+    build:
+      context: .
+      args:
+        NODE_ENV: development
+    container_name: my-new-project-seed
+    command: npm run seed
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    depends_on:
+      - mongo
+
 volumes:
   db-data:

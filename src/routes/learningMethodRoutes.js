@@ -13,10 +13,10 @@ const validateRecord = [
 
 const router = express.Router();
 
-router.get('/learning-method', learningMethodController.getLearningMethods);
-router.get('/learning-method:id', learningMethodController.getLearningMethodById);
-router.post('/learning-method', validateRecord, learningMethodController.createLearningMethod);
-router.put('/learning-method:id', validateRecord, learningMethodController.updateLearningMethod);
-router.delete('/learning-method:id', learningMethodController.deleteLearningMethod);
+router.get('/', learningMethodController.getLearningMethods);
+router.get('/:id', learningMethodController.getLearningMethodById);
+router.post('/', validateRecord, learningMethodController.createLearningMethod);
+router.put('/:id', validateRecord, learningMethodController.updateLearningMethod);
+router.delete('/:id', learningMethodController.deleteLearningMethod);
 
 module.exports = router;
