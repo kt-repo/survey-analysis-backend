@@ -89,41 +89,19 @@ GET /api/learning-method
 Response:
 
 ```json
-{
-  "name": "John Doe",
-  "semester": "Fall",
-  "year": 2023,
-  "methods": [
-    {
-      "method": "Listening to the lectures",
-      "scores": [0, 0, 0, 0, 0]
-    },
-    {
-      "method": "Re-review previous material and recordings",
-      "scores": [0, 0, 0, 0, 0]
-    },
-    {
-      "method": "Completing assignments",
-      "scores": [0, 0, 0, 0, 0]
-    },
-    {
-      "method": "Taking quizzes",
-      "scores": [0, 0, 0, 0, 0]
-    },
-    {
-      "method": "Preparing for and completing the final exam",
-      "scores": [0, 0, 0, 0, 0]
-    },
-    {
-      "method": "Providing/receiving comments to/from peers",
-      "scores": [0, 0, 0, 0, 0]
-    },
-    {
-      "method": "Collaborating during the term project",
-      "scores": [0, 0, 0, 0, 0]
-    }
-  ]
-}
+[
+   {
+      "_id": "12345",
+      "name": "CS633",
+      "semester": "Fall",
+      "year": "2019",
+      "data": [
+         {"method": "Listen to lectures", "ranking": [0,0,1,3,5]},
+         {"method": "Re-review previous materials & recordings", "ranking": [0,0,1,3,5]},
+         {"method": "Complete Assignments", "ranking": [0,0,1,3,5]}
+      ]
+   }
+]
 
 ```
 

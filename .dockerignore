@@ -9,6 +9,7 @@ node_modules
 docker-compose.prod.yml
 
 # other directories
+test
 
 # ignore git directories and files
 .git
