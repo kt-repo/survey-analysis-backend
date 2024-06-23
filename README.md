@@ -27,14 +27,15 @@ cd survey-analysis-backend
 ### Development
 
 #### Start server
-To start the server in development mode (w/o running tests):
+
+To start the server in development environment in detached mode:
 
 ```
 # first time
-docker-compose up --build app
+docker-compose up --build -d
 
 # each time after
-docker-compose up app
+docker-compose up -d
 ```
 
 #### Run seeder
@@ -74,6 +75,7 @@ docker-compose run --rm test
 Ensure files for environment variables exist and the following variables are defined:
 
 ### Development
+
 `.env`
 
 ```
@@ -82,6 +84,7 @@ DB_CONNECTION_STRING=mongodb://mongo:27017/dev_db
 ```
 
 ### Production
+
 `.env.production`
 
 ```
@@ -90,6 +93,7 @@ DB_CONNECTION_STRING=[Production Database]
 ```
 
 ### Testing
+
 `.env.test`
 
 ```

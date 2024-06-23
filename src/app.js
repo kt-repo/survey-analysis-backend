@@ -13,8 +13,8 @@ app.use(express.json());
 app.use(corsMiddleware);
 
 // Routes
-app.use('/api', userRoutes);
-app.use('/api', learningMethodRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/learning-methods', learningMethodRoutes);
 
 mongoose.connect(config.dbConnectionString, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))

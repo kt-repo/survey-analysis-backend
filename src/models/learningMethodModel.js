@@ -2,16 +2,41 @@
 
 const mongoose = require('mongoose');
 
-const DataSchema = new mongoose.Schema({
-    method: { type: String, required: true },
-    ranking: { type: [Number], required: true }
+// Define the schema for each learning method and its scores
+const methodSchema = new mongoose.Schema({
+    method: {
+        type: String,
+        required: true,
+        enum: [
+            'Listening to the lectures',
+            'Re-review previous material and recordings',
+            'Completing assignments',
+            'Taking quizzes',
+            'Preparing for and completing the final exam',
+            'Providing/receiving comments to/from peers',
+            'Collaborating during the term project'
+        ]
+    },
+    scores: {
+        type: [Number],
+        required: true,
+        validate: {
+            validator: function(array) {
+                return array.length === 5;
+            },
+            message: 'Scores array must contain exactly 5 elements.'
+        }
+    }
 });
 
-const LearningMethodSchema = new mongoose.Schema({
+// Define the schema for the main document which includes multiple methods
+const learningMethodSchema = new mongoose.Schema({
     name: { type: String, required: true },
     semester: { type: String, required: true },
     year: { type: Number, required: true },
-    data: [DataSchema]
+    methods: [methodSchema]
 });
 
-module.exports = mongoose.model('LearningMethod', LearningMethodSchema);
+const LearningMethod = mongoose.model('LearningMethod', learningMethodSchema);
+
+module.exports = LearningMethod;
