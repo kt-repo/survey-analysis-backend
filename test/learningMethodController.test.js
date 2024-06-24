@@ -9,19 +9,19 @@ const config = require('../src/config'); // Import the config file
 describe('Learning Method API', () => {
     beforeAll(async () => {
         // Connect to the database
-        await mongoose.connect(config.dbConnectionString, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        // console.log('Connecting to MongoDB...');
+        await mongoose.connect(config.dbConnectionString);
     });
 
     beforeEach(async () => {
         // Clear the database before each test
+        // console.log('Clearing database...');
         await LearningMethod.deleteMany({});
     });
 
     afterAll(async () => {
         // Disconnect from the database after all tests
+        // console.log('Disconnecting from MongoDB...');
         await mongoose.disconnect();
     });
 
