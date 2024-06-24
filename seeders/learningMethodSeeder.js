@@ -1,50 +1,35 @@
 // seeders/learningMethodSeeder.js
 
+const mongoose = require('mongoose');
+const fs = require('fs');
+const path = require('path');
 const LearningMethod = require('../src/models/learningMethodModel');
-
-const learningMethods = [
-    {
-        name: 'CS633',
-        semester: 'Fall',
-        year: 2024,
-        methods: [
-            {
-                method: 'Listening to the lectures',
-                scores: [1, 2, 3, 4, 5],
-            },
-            {
-                method: 'Completing assignments',
-                scores: [2, 3, 4, 5, 6],
-            },
-        ],
-    },
-    {
-        name: 'CS637',
-        semester: 'Spring',
-        year: 2024,
-        methods: [
-            {
-                method: 'Taking quizzes',
-                scores: [3, 4, 5, 6, 7],
-            },
-            {
-                method: 'Preparing for and completing the final exam',
-                scores: [4, 5, 6, 7, 8],
-            },
-        ],
-    },
-];
+const config = require('../src/config'); // Adjust the path to your config file
 
 const seedLearningMethods = async () => {
     try {
+        // Read data from the JSON file
+        const dataPath = path.join(__dirname, 'learningMethodData.json');
+        const learningMethods = JSON.parse(fs.readFileSync(dataPath, 'utf-8'));
+
+        await mongoose.connect(config.dbConnectionString);
+        console.log('Connected to MongoDB');
+
         await LearningMethod.deleteMany({});
         console.log('Cleared existing LearningMethod data');
+
         await LearningMethod.insertMany(learningMethods);
         console.log('Inserted seed LearningMethod data');
+
+        await mongoose.disconnect();
+        console.log('Disconnected from MongoDB');
     } catch (error) {
         console.error('Error seeding LearningMethod data', error);
+        process.exit(1);
     }
 };
 
 module.exports = seedLearningMethods;
 
+// To run the seeder, you can create a script or run it manually:
+// node seeders/learningMethodSeeder.js
