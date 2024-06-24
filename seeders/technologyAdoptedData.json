@@ -1,0 +1,162 @@
+[
+  {
+    "name": "CS633",
+    "semester": "Fall",
+    "year": 2023,
+    "studentResponses": [
+      {
+        "response": "I used estimation techniques and Test-driven development in my project.",
+        "techniqueTags": [
+          { "technique": "Estimation" },
+          { "technique": "Test-Driven Development (TDD)" }
+        ]
+      },
+      {
+        "response": "Unit testing and automated testing were crucial for our success.",
+        "techniqueTags": [
+          { "technique": "Unit Testing" },
+          { "technique": "Automated Testing" }
+        ]
+      },
+      {
+        "response": "We relied heavily on version control and GitHub to ensure quality.",
+        "techniqueTags": [
+          { "technique": "Version Control" },
+          { "technique": "GitHub" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CS673",
+    "semester": "Spring",
+    "year": 2024,
+    "studentResponses": [
+      {
+        "response": "Exploratory estimation helped us define our scope and Integration tests caught many issues.",
+        "techniqueTags": [
+          { "technique": "Exploratory Estimation" },
+          { "technique": "Integration" }
+        ]
+      },
+      {
+        "response": "Historic estimation was used to predict timelines and project management tools kept us on track.",
+        "techniqueTags": [
+          { "technique": "Historic Estimation" },
+          { "technique": "Project Management" }
+        ]
+      },
+      {
+        "response": "Feedback and collaboration were key to our success.",
+        "techniqueTags": [
+          { "technique": "Feedback" },
+          { "technique": "Collaboration" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CS633",
+    "semester": "Summer",
+    "year": 2023,
+    "studentResponses": [
+      {
+        "response": "Manual testing identified initial bugs and peer reviews improved our code quality.",
+        "techniqueTags": [
+          { "technique": "Manual Testing" },
+          { "technique": "Peer Reviews" }
+        ]
+      },
+      {
+        "response": "Architecture design and best practices were planned upfront.",
+        "techniqueTags": [
+          { "technique": "Architecture Design" },
+          { "technique": "Best Practices" }
+        ]
+      },
+      {
+        "response": "Communication was clear and constant, and wireframing helped us visualize the UI.",
+        "techniqueTags": [
+          { "technique": "Communication" },
+          { "technique": "Wireframing" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CS673",
+    "semester": "Winter",
+    "year": 2024,
+    "studentResponses": [
+      {
+        "response": "UI/UX design enhanced user experience and personas guided our development.",
+        "techniqueTags": [
+          { "technique": "UI/UX Design" },
+          { "technique": "Personas" }
+        ]
+      },
+      {
+        "response": "All-pairs testing found edge cases and blueprints clarified our architecture.",
+        "techniqueTags": [
+          { "technique": "All-Pairs Testing" },
+          { "technique": "Blueprints" }
+        ]
+      },
+      {
+        "response": "Mock component diagrams were used extensively and API specifications were detailed and clear.",
+        "techniqueTags": [
+          { "technique": "Mock Component Diagrams" },
+          { "technique": "API Specifications" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CS633",
+    "semester": "Fall",
+    "year": 2022,
+    "studentResponses": [
+      {
+        "response": "Following best practices improved our workflow and communication was constant.",
+        "techniqueTags": [
+          { "technique": "Best Practices" },
+          { "technique": "Communication" }
+        ]
+      },
+      {
+        "response": "Documentation and testing were crucial for our success.",
+        "techniqueTags": []
+      },
+      {
+        "response": "Project management and version control were essential.",
+        "techniqueTags": [
+          { "technique": "Project Management" },
+          { "technique": "Version Control" }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "CS673",
+    "semester": "Spring",
+    "year": 2023,
+    "studentResponses": [
+      {
+        "response": "Manual testing identified initial bugs.",
+        "techniqueTags": [
+          { "technique": "Manual Testing" }
+        ]
+      },
+      {
+        "response": "Automated testing was crucial for regression.",
+        "techniqueTags": [
+          { "technique": "Automated Testing" }
+        ]
+      },
+      {
+        "response": "Wireframing helped us visualize the UI.",
+        "techniqueTags": []
+      }
+    ]
+  }
+]

@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const seedLearningMethods = require('./learningMethodSeeder');
-// const seedAnotherCollection = require('./anotherCollectionSeeder'); // Import other seeders as needed
+const seedTechnologiesAdopted = require('./technologyAdoptedSeeder'); // Import other seeders as needed
 
 // Load environment variables from .env file
 dotenv.config({ path: '../.env' });
@@ -23,7 +23,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING, {
 const seedAll = async () => {
     try {
         await seedLearningMethods();
-        // await seedAnotherCollection(); // Call other seeders as needed
+        await seedTechnologiesAdopted(); // Call other seeders as needed
         console.log('All data seeded');
     } catch (error) {
         console.error('Error seeding data', error);
