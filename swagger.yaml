@@ -1,0 +1,324 @@
+openapi: 3.0.0
+info:
+  title: My API
+  description: A sample API to demonstrate Swagger with Node.js, Express, and MongoDB.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+    description: Development server
+  - url: https://survey-analysis-backend.onrender.com/api
+    description: Production server
+
+paths:
+  /learning-methods:
+    get:
+      summary: Get all learning methods
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LearningMethod'
+    post:
+      summary: Create a new learning method
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LearningMethod'
+      responses:
+        '201':
+          description: Learning method created
+
+  /learning-methods/{id}:
+    get:
+      summary: Get a learning method by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LearningMethod'
+        '404':
+          description: Learning method not found
+    put:
+      summary: Update a learning method
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LearningMethod'
+      responses:
+        '200':
+          description: Learning method updated
+        '404':
+          description: Learning method not found
+    delete:
+      summary: Delete a learning method
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Learning method deleted
+        '404':
+          description: Learning method not found
+
+  /technologies-adopted:
+    get:
+      summary: Get all technologies adopted
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TechnologyAdopted'
+    post:
+      summary: Create a new technology adopted
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TechnologyAdopted'
+      responses:
+        '201':
+          description: Technology adopted created
+
+  /technologies-adopted/{id}:
+    get:
+      summary: Get a technology adopted by ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TechnologyAdopted'
+        '404':
+          description: Technology adopted not found
+    put:
+      summary: Update a technology adopted
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TechnologyAdopted'
+      responses:
+        '200':
+          description: Technology adopted updated
+        '404':
+          description: Technology adopted not found
+    delete:
+      summary: Delete a technology adopted
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Technology adopted deleted
+        '404':
+          description: Technology adopted not found
+
+  /technologies-adopted/{id}/responses/{responseId}/tags:
+    post:
+      summary: Add a tag to a response
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: responseId
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TechniqueTag'
+      responses:
+        '200':
+          description: Tag added to response
+    delete:
+      summary: Remove a tag from a response
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: responseId
+          required: true
+          schema:
+            type: string
+        - in: path
+          name: tagId
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Tag removed from response
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+    LearningMethod:
+      type: object
+      required:
+        - name
+        - semester
+        - year
+        - methods
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        semester:
+          type: string
+        year:
+          type: number
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Method'
+    Method:
+      type: object
+      required:
+        - method
+        - scores
+      properties:
+        method:
+          type: string
+          enum:
+            - Listening to the lectures
+            - Re-review previous material and recordings
+            - Completing assignments
+            - Taking quizzes
+            - Preparing for and completing the final exam
+            - Providing/receiving comments to/from peers
+            - Collaborating during the term project
+        scores:
+          type: array
+          items:
+            type: number
+          minItems: 5
+          maxItems: 5
+    TechnologyAdopted:
+      type: object
+      required:
+        - name
+        - semester
+        - year
+        - studentResponses
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        semester:
+          type: string
+        year:
+          type: number
+        studentResponses:
+          type: array
+          items:
+            $ref: '#/components/schemas/StudentResponse'
+    StudentResponse:
+      type: object
+      required:
+        - response
+      properties:
+        response:
+          type: string
+        techniqueTags:
+          type: array
+          items:
+            $ref: '#/components/schemas/TechniqueTag'
+    TechniqueTag:
+      type: object
+      properties:
+        id:
+          type: string
+        technique:
+          type: string
+          enum:
+            - Estimation
+            - Test-Driven Development (TDD)
+            - Unit Testing
+            - Exploratory Estimation
+            - Historic Estimation
+            - Integration
+            - Project Management
+            - Feedback
+            - Collaboration
+            - Version Control
+            - Git
+            - GitHub
+            - Peer Reviews
+            - Best Practices
+            - Communication
+            - Architecture Design
+            - Manual Testing
+            - Automated Testing
+            - Wireframing
+            - UI/UX Design
+            - Personas
+            - All-Pairs Testing
+            - Blueprints
+            - Mock Component Diagrams
+            - API Specifications
+            - Documentation
+            - Testing

@@ -1,6 +1,6 @@
-// src/middleware/cors.js
+// src/middleware/corsMiddleware.js
 
-const cors = require('cors');
+const corsMiddleware = require('cors');
 
 const corsOptions = {
     origin: '*', // You can specify specific domains here
@@ -9,4 +9,4 @@ const corsOptions = {
     optionsSuccessStatus: 204,
 };
 
-module.exports = cors(corsOptions);
+module.exports = corsMiddleware(corsOptions);
