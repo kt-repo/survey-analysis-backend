@@ -7,15 +7,15 @@ const methodSchema = new mongoose.Schema({
     method: {
         type: String,
         required: true,
-        enum: [
-            'Listening to the lectures',
-            'Re-review previous material and recordings',
-            'Completing assignments',
-            'Taking quizzes',
-            'Preparing for and completing the final exam',
-            'Providing/receiving comments to/from peers',
-            'Collaborating during the term project'
-        ]
+        // enum: [
+        //     'Listening to the lectures',
+        //     'Re-review previous material and recordings',
+        //     'Completing assignments',
+        //     'Taking quizzes',
+        //     'Preparing for and completing the final exam',
+        //     'Providing/receiving comments to/from peers',
+        //     'Collaborating during the term project'
+        // ]
     },
     scores: {
         type: [Number],
