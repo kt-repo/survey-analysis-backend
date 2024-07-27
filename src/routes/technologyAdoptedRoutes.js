@@ -16,7 +16,5 @@ router.get('/:id', technologyAdoptedController.getTechnologyAdoptedById);
 router.post('/', validateRecord, technologyAdoptedController.createTechnologyAdopted);
 router.put('/:id', validateRecord, technologyAdoptedController.updateTechnologyAdopted);
 router.delete('/:id', technologyAdoptedController.deleteTechnologyAdopted);
-router.post('/:id/responses/:responseId/tags', technologyAdoptedController.addTagToResponse); // Add a tag
-router.delete('/:id/responses/:responseId/tags/:tagId', technologyAdoptedController.removeTagFromResponse); // Remove a tag
 
 module.exports = router;
