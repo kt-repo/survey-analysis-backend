@@ -9,85 +9,6 @@ servers:
   - url: https://survey-analysis-backend.onrender.com/api
 
 paths:
-  /users:
-    get:
-      summary: Get All Users
-      description: Retrieve a list of all users in the system.
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
-    post:
-      summary: Create User
-      description: Create a new user with the provided information.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        '201':
-          description: User created
-
-  /users/{id}:
-    get:
-      summary: Get User by ID
-      description: Retrieve details of a specific user by their ID.
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        '404':
-          description: User not found
-    put:
-      summary: Update User
-      description: Update the information of an existing user.
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/User'
-      responses:
-        '200':
-          description: User updated
-        '404':
-          description: User not found
-    delete:
-      summary: Delete User
-      description: Delete a user from the system by their ID.
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-      responses:
-        '204':
-          description: User deleted
-        '404':
-          description: User not found
 
   /learning-methods:
     get:
@@ -240,68 +161,8 @@ paths:
         '404':
           description: Technology adopted not found
 
-  /technologies-adopted/{id}/responses/{responseId}/tags:
-    post:
-      summary: Add a tag to a response
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-        - in: path
-          name: responseId
-          required: true
-          schema:
-            type: string
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/TechniqueTag'
-      responses:
-        '200':
-          description: Tag added to response
-
-  /technologies-adopted/{id}/responses/{responseId}/tags/{tagId}:
-    delete:
-      summary: Remove a tag from a response
-      description: Remove a specific tag from a response within a technology adopted record.
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-          description: The ID of the technology adopted record
-        - in: path
-          name: responseId
-          required: true
-          schema:
-            type: string
-          description: The ID of the student response
-        - in: path
-          name: tagId
-          required: true
-          schema:
-            type: string
-          description: The ID of the tag to be removed
-      responses:
-        '204':
-          description: Tag removed from response
-        '404':
-          description: Technology adopted record, response, or tag not found
-
 components:
   schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
     LearningMethod:
       type: object
       required:
@@ -330,14 +191,6 @@ components:
       properties:
         method:
           type: string
-          enum:
-            - Listening to the lectures
-            - Re-review previous material and recordings
-            - Completing assignments
-            - Taking quizzes
-            - Preparing for and completing the final exam
-            - Providing/receiving comments to/from peers
-            - Collaborating during the term project
         scores:
           type: array
           items:
@@ -350,7 +203,7 @@ components:
         - name
         - semester
         - year
-        - studentResponses
+        - techniques
       properties:
         id:
           type: string
@@ -360,53 +213,18 @@ components:
           type: string
         year:
           type: number
-        studentResponses:
+        techniques:
           type: array
           items:
-            $ref: '#/components/schemas/StudentResponse'
-    StudentResponse:
+            $ref: '#/components/schemas/Technique'
+    Technique:
       type: object
       required:
-        - response
+        - technique
+        - counts
       properties:
-        response:
-          type: string
-        techniqueTags:
-          type: array
-          items:
-            $ref: '#/components/schemas/TechniqueTag'
-    TechniqueTag:
-      type: object
-      properties:
-        id:
-          type: string
         technique:
           type: string
-          enum:
-            - Estimation
-            - Test-Driven Development (TDD)
-            - Unit Testing
-            - Exploratory Estimation
-            - Historic Estimation
-            - Integration
-            - Project Management
-            - Feedback
-            - Collaboration
-            - Version Control
-            - Git
-            - GitHub
-            - Peer Reviews
-            - Best Practices
-            - Communication
-            - Architecture Design
-            - Manual Testing
-            - Automated Testing
-            - Wireframing
-            - UI/UX Design
-            - Personas
-            - All-Pairs Testing
-            - Blueprints
-            - Mock Component Diagrams
-            - API Specifications
-            - Documentation
-            - Testing
+        counts:
+          type: number
+          minimum: 0
